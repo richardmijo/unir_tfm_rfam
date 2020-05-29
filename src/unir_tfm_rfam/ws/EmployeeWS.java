@@ -1,15 +1,12 @@
 package unir_tfm_rfam.ws;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
+import javax.jws.*;
 
-import unir_tfm_rfam.persistence.DBPostgres;
-import unir_tfm_rfam.persistence.Query;
+import unir_tfm_rfam.persistence.*;
 
 @WebService
 public class EmployeeWS {
 	private final double EXCHANGE_RATE_USD_EUR = 0.89f;
-	//private DBPostgres db;/
 	private Query query;
 
 	@WebMethod
@@ -17,7 +14,7 @@ public class EmployeeWS {
 		return usd * EXCHANGE_RATE_USD_EUR;
 	}
 
-	@WebMethod
+	/*@WebMethod
 	public boolean login(String name, String password) {
 		query = new Query();
 		try {
@@ -28,6 +25,6 @@ public class EmployeeWS {
 		}
 
 		return true;
-	}
+	}*/
 
 }
