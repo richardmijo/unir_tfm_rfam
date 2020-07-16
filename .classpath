@@ -14,12 +14,12 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="libs/postgresql-42.2.5.jar"/>
-	<classpathentry kind="lib" path="/gim/lib/commons-beanutils.jar"/>
-	<classpathentry kind="lib" path="C:/Users/rfarmijosm/git/unir_tfm_rfam/libs/log4j-core-2.12.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/rfarmijosm/git/unir_tfm_rfam/libs/log4j-core-2.12.1-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/rfarmijosm/git/unir_tfm_rfam/libs/log4j-core-2.12.1-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/rfarmijosm/git/unir_tfm_rfam/libs/log4j-api-2.12.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/rfarmijosm/git/unir_tfm_rfam/libs/log4j-api-2.12.1-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/rfarmijosm/git/unir_tfm_rfam/libs/log4j-api-2.12.1-sources.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-api-2.12.1.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-api-2.12.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-api-2.12.1-sources.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-core-2.12.1.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-core-2.12.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-core-2.12.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Desarrollo/git/unir_tfm_rfam/libs/commons-beanutils.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

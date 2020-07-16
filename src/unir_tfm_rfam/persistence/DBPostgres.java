@@ -33,7 +33,7 @@ public class DBPostgres {
 			this.conexion.setTransactionIsolation(2);
 			this.conexion.setAutoCommit(true);
 
-			System.out.println("Connected to the PostgreSQL server successfully.");
+			//System.out.println("Connected to the PostgreSQL server successfully.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

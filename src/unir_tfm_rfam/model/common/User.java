@@ -12,7 +12,10 @@ public class User {
 	private String username;
 	private String password;
 	private Boolean isActive;
-	
+
+	private String profilePictureURL;
+	private String profilePictureName;
+
 	public User() {
 	}
 
@@ -26,6 +29,21 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.isActive = isActive;
+	}
+
+	public User(Long id, String name, String surname, String dni, String email, String username, String password,
+			Boolean isActive, String profilePictureURL, String profilePictureName) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.dni = dni;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.isActive = isActive;
+		this.profilePictureURL = profilePictureURL;
+		this.profilePictureName = profilePictureName;
 	}
 
 	public Long getId() {
@@ -90,6 +108,22 @@ public class User {
 
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	public String getProfilePictureURL() {
+		return profilePictureURL;
+	}
+
+	public void setProfilePictureURL(String profilePictureURL) {
+		this.profilePictureURL = profilePictureURL;
+	}
+
+	public String getProfilePictureName() {
+		return profilePictureName;
+	}
+
+	public void setProfilePictureName(String profilePictureName) {
+		this.profilePictureName = profilePictureName;
 	}
 
 }
