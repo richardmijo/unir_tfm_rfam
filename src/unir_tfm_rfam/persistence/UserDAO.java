@@ -228,7 +228,7 @@ public class UserDAO {
 			ur.setStatus(ResponseStatus.Bad_Request_400.toString());
 		} else {
 			
-			spd = new SystemParameterDAO();
+			spd = new SystemParameterDAO(); 
 			SystemParameter FILE_LOCATION = spd.findParameterByName("FILE_LOCATION");
 			
 			DataHandler dataHandler = uploadedFile.getDataHandler();
