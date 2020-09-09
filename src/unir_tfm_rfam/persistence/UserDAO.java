@@ -137,6 +137,7 @@ public class UserDAO {
 				this.stActual = db.getConexion().createStatement(1005, 1007);
 				String sql = "select us.* from _user us where us.surname ilike '%" + criteria + "%' or us.name like '%"
 						+ criteria + "%' LIMIT " + pageSize + " offset " + (pageNumber - 1) * pageSize;
+				System.out.println("------ list users "+sql);
 				ResultSet rs = this.stActual.executeQuery(sql);
 				User us;
 
@@ -226,9 +227,14 @@ public class UserDAO {
 			ur.setMessage("Credenciales incorrectas");
 			ur.setStatus(ResponseStatus.Bad_Request_400.toString());
 		} else {
+			
+			spd = new SystemParameterDAO();
+			SystemParameter FILE_LOCATION = spd.findParameterByName("FILE_LOCATION");
+			
 			DataHandler dataHandler = uploadedFile.getDataHandler();
-			String path = System.getProperty("user.dir");
-			String fileName = uploadedFile.getName() + "." + uploadedFile.getFileType();
+			
+			String path = FILE_LOCATION.getValue();
+			String fileName = path + "/" + uploadedFile.getName() + "." + uploadedFile.getFileType();
 
 			try {
 				InputStream inputStream = dataHandler.getInputStream();
@@ -420,8 +426,10 @@ public class UserDAO {
 			SystemParameter FILE_LOCATION = spd.findParameterByName("FILE_LOCATION");
 
 			ProcessBuilder processBuilder = new ProcessBuilder();
-			processBuilder.command("cmd.exe", "/c",
-					"cd " + FILE_LOCATION + " && tar cvf c:/opt/" + filename + ".zip *.*");
+			
+			// processBuilder.command("cmd.exe", "/c", "cd " + FILE_LOCATION + " && tar cvf c:/opt/" + filename + ".zip *.*");
+			processBuilder.command("bash", "-c", "cd "+FILE_LOCATION.getValue()+" && tar -zcvf "+filename+".tar.gz .");
+			
 			try {
 				StringBuffer sb = new StringBuffer();
 				Process process = processBuilder.start();
