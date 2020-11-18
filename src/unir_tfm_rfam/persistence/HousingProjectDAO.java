@@ -16,12 +16,15 @@ import java.util.List;
 import unir_tfm_rfam.dto.HousingProjectResponse;
 import unir_tfm_rfam.dto.ServiceRequest;
 import unir_tfm_rfam.model.common.HousingProject;
+import unir_tfm_rfam.model.common.SystemParameter;
 import unir_tfm_rfam.util.ResponseStatus;
 
 public class HousingProjectDAO {
 
 	private DBPostgres db;
 	private Statement stActual;
+	
+	private SystemParameterDAO spd;
 
 	public Boolean verifyAccess(ServiceRequest request) {
 		Long userId = null;
@@ -118,18 +121,25 @@ public class HousingProjectDAO {
 	}
 
 	public String generateTXTReport(List<HousingProject> projects) {
+		spd = new SystemParameterDAO();
+
+		SystemParameter FILE_LOCATION_DOWNLOAD = spd.findParameterByName("FILE_LOCATION_DOWNLOAD");
+		String path_download = FILE_LOCATION_DOWNLOAD.getValue();
+		
 		String fileName = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-		String path = "http://localhost:8080/";
+		
+		SystemParameter FILE_LOCATION = spd.findParameterByName("FILE_LOCATION");
+		String path = FILE_LOCATION.getValue();
 
 		try (Writer writer = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream(path + fileName + ".txt"), "utf-8"))) {
+				new OutputStreamWriter(new FileOutputStream(path + "/" + fileName + ".txt"), "utf-8"))) {
 			for (HousingProject hp : projects) {
 				writer.write(hp.getId() + "\t" + hp.getNumber() + "\t" + hp.getName() + "\n");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return path + fileName + ".txt";
+		return path_download + "/" + fileName + ".txt";
 	}
 
 	private Integer countHousinProjects() {
